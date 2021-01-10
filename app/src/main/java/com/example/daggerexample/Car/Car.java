@@ -1,4 +1,4 @@
- package com.example.daggerexample;
+ package com.example.daggerexample.Car;
 
 import android.util.Log;
 
@@ -13,7 +13,8 @@ public class Car {
     private Wheels wheels;
 
     @Inject
-    public Car( Wheels wheels) {
+    public Car(Engine engine,Wheels wheels) {
+        this.engine=engine;
         this.wheels = wheels;
     }
 
@@ -25,6 +26,7 @@ public class Car {
 
     public void drive()
     {
+        engine.start();
         Log.d(TAG, "drive: driving...");
     }
 

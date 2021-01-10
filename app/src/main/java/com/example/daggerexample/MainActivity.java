@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.daggerexample.Car.Car;
+import com.example.daggerexample.Dagger.CarComponent;
+import com.example.daggerexample.Dagger.DaggerCarComponent;
+
 import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //since compiled dagger created DaggerComponent  CarComponent is interface can't instantiate
-        CarComponent carComponent=DaggerCarComponent.create();
+        CarComponent carComponent= DaggerCarComponent.create();
         //car=carComponent.getCar();
         carComponent.Inject(this);//field injection in mainactivity constructor can't be injected so this will the Car class
         car.drive();
