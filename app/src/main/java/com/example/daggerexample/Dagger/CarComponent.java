@@ -3,14 +3,21 @@ package com.example.daggerexample.Dagger;
 import com.example.daggerexample.Car.Car;
 import com.example.daggerexample.MainActivity;
 
+import javax.inject.Named;
+
+import dagger.BindsInstance;
 import dagger.Component;
 
-@Component(modules = {WheelsModule.class,DieselEngineModule.class})
+@Component(modules = {WheelsModule.class, PetrolEngineModule.class})
 public interface CarComponent {
-    //creates the graph engine<- car -> Wheels [car needs both] this is DAG its knows the order this is called as injector ,
-    // compile time generation to gett rid od reflection
-
     Car getCar();
-
-    void Inject(MainActivity mainActivity);
+    void inject(MainActivity mainActivity);
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        Builder horsePower(@Named("horse power") int horsePower);
+        @BindsInstance
+        Builder engineCapacity(@Named("engine capacity") int engineCapacity);
+        CarComponent build();
+    }
 }

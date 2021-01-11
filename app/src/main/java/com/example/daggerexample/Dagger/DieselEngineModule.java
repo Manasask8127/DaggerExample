@@ -3,19 +3,21 @@ package com.example.daggerexample.Dagger;
 import com.example.daggerexample.Car.DieselEngine;
 import com.example.daggerexample.Car.Engine;
 
-import dagger.Binds;
 import dagger.Module;
+import dagger.Provides;
 
 @Module
-public abstract class DieselEngineModule {
-
-    /*@Provides
-    Engine providePetrolEngine(PetrolEngine engine)
-    {
+public class DieselEngineModule {
+    private int horsePower;
+    public DieselEngineModule(int horsePower) {
+        this.horsePower = horsePower;
+    }
+    @Provides
+    int provideHorsePower() {
+        return horsePower;
+    }
+    @Provides
+    Engine provideEngine(DieselEngine engine) {
         return engine;
-    }*/
-    //to optimize use abstract to overcome redundancy
-    @Binds
-    abstract Engine bindEngine(DieselEngine engine);
-
+    }
 }
