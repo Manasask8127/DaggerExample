@@ -2,8 +2,11 @@
 
 import android.util.Log;
 
+import com.example.daggerexample.Dagger.PerActivity;
+
 import javax.inject.Inject;
 
+@PerActivity
 public class Car {
 
     private static final String TAG = "Car";
@@ -11,9 +14,11 @@ public class Car {
     @Inject Engine engine;
     //private Engine engine;
     private Wheels wheels;
+    private Driver driver;
 
     @Inject
-    public Car(Engine engine,Wheels wheels) {
+    public Car(Driver driver,Engine engine,Wheels wheels) {
+        this.driver=driver;
         this.engine=engine;
         this.wheels = wheels;
     }
@@ -27,7 +32,7 @@ public class Car {
     public void drive()
     {
         engine.start();
-        Log.d(TAG, "drive: driving...");
+        Log.d(TAG, driver+" drives "+this);
     }
 
 

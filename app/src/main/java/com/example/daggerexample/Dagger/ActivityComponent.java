@@ -3,21 +3,21 @@ package com.example.daggerexample.Dagger;
 import com.example.daggerexample.Car.Car;
 import com.example.daggerexample.MainActivity;
 
-import javax.inject.Named;
+import dagger.Subcomponent;
 
-import dagger.BindsInstance;
-import dagger.Component;
-
-@Component(modules = {WheelsModule.class, PetrolEngineModule.class})
-public interface CarComponent {
+@PerActivity
+@Subcomponent(modules = {WheelsModule.class, DieselEngineModule.class})
+public interface ActivityComponent {
     Car getCar();
     void inject(MainActivity mainActivity);
-    @Component.Builder
+    /*@Component.Builder
     interface Builder {
         @BindsInstance
         Builder horsePower(@Named("horse power") int horsePower);
         @BindsInstance
         Builder engineCapacity(@Named("engine capacity") int engineCapacity);
-        CarComponent build();
-    }
+
+        Builder appComponent(AppComponent appComponent);
+        ActivityComponent build();*/
+    //}
 }
