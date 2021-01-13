@@ -5,6 +5,7 @@ import com.example.daggerexample.Car.PetrolEngine;
 
 import dagger.Binds;
 import dagger.Module;
+
 @Module
 public abstract class PetrolEngineModule {
     @Binds

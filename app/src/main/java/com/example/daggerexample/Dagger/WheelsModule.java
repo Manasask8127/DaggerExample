@@ -9,25 +9,18 @@ import dagger.Provides;
 
 @Module
 public abstract class WheelsModule {
-//to optimize and non-instantiating we made it static
     @Provides
-    static Rims provideRims()
-    {
+    static Rims provideRims() {
         return new Rims();
     }
-
     @Provides
-    static Tires provideTires()
-    {
-        Tires tires=new Tires();
+    static Tires provideTires() {
+        Tires tires = new Tires();
         tires.inflate();
         return tires;
     }
-
     @Provides
-    static Wheels provideWheels(Rims rims, Tires tires)
-    {
-        return new Wheels(rims,tires);
+    static Wheels provideWheels(Rims rims, Tires tires) {
+        return new Wheels(rims, tires);
     }
-
 }
